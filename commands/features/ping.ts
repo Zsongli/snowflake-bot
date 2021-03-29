@@ -19,8 +19,7 @@ export const slashCommand: SlashCommand = {
     name: "ping",
     desc: "Responds with the latency.",
     run: (interaction) => {
-        interaction.channel.send(`Pong! ${bot.ws.ping}ms`);
-        interaction.Acknowledge();
+        interaction.AcknowledgeReply(`Pong! ${bot.ws.ping}ms`);
     },
     onNoPerm: (interaction) => {
         interaction.channel.send(interaction.member.toString() + "You don't have the permission to use this command!");

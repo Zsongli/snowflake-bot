@@ -166,8 +166,7 @@ export const slashCommand: SlashCommand = {
             const speedrun = new Speedrun(interaction.member!);
             speedruns.push(speedrun);
             speedrun.Start();
-            interaction.channel.send(interaction.member.toString() + " Started the run!");
-            interaction.Acknowledge();
+            interaction.AcknowledgeReply("💩 Started the run!");
         }
         else if (interaction.args.has("stop")) {
 
@@ -187,9 +186,7 @@ export const slashCommand: SlashCommand = {
                 interaction.channel.send("New record!");
                 fs.writeFile(path, JSON.stringify(leaderboard), "utf-8", () => { });
             }
-
-            interaction.channel.send(`${interaction.member.toString()} Took you this long: ${formatTime(speedrun!.score!)}`);
-            interaction.Acknowledge();
+            interaction.AcknowledgeReply(`Took you this long: ${formatTime(speedrun!.score!)}`);
 
         }
         else if (interaction.args.has("leaderboard")) {
@@ -254,8 +251,8 @@ export const slashCommand: SlashCommand = {
                     }
                 ]
             };
+            interaction.AcknowledgeReply("⮯");
             interaction.channel.send({ embed });
-            interaction.Acknowledge();
         }
         //a tribute to yandere dev with the else if's
     },

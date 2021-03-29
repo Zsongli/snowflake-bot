@@ -96,8 +96,8 @@ export const slashCommand: SlashCommand = {
                     }
                 ]
             };
+            interaction.AcknowledgeReply("⮯");
             interaction.channel.send({ embed });
-            interaction.Acknowledge();
         }
         else {
             const embed = {
@@ -121,8 +121,8 @@ export const slashCommand: SlashCommand = {
                 //@ts-ignore
                 embed.fields.push({ name: command.name, value: command.desc });
 
+            interaction.AcknowledgeReply("⮯");
             interaction.channel.send({ embed });
-            interaction.Acknowledge();
         }
     },
     onNoPerm: (interaction: SlashCommandInteraction) => {

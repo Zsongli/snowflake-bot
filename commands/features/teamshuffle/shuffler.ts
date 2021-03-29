@@ -1,4 +1,4 @@
-import Discord from "discord.js";
+import Discord, { IntegrationApplication } from "discord.js";
 
 export default class Shuffler {
     private msg: Discord.Message | undefined;
@@ -35,8 +35,19 @@ export default class Shuffler {
                 //Everyone on the server reacted (not gonna handle cause it's very unlikely)
             })
             .catch((collected: Discord.Collection<string, Discord.MessageReaction>) => {
-                if (!collected.first())
-                    return this.msg!.delete({ timeout: 1 });
+                if (collected.first()?.count === 1) {
+                    const embed = {
+                        "title": "Team shuffle",
+                        "description": "The randomization failed, because nobody joined.",
+                        "color": 12386304,
+                        "thumbnail": {
+                            "url": "https://1001freedownloads.s3.amazonaws.com/vector/thumb/133250/milker_X_icon.png"
+                        },
+                        "fields": []
+                    };
+                    this.msg!.reactions.removeAll();
+                    return this.msg!.edit({ embed });
+                }
                 const users: Discord.User[] = collected.first()!.users.cache.array();
                 for (var i = 0; i < users.length; i++) {
                     if (!users[i].bot)

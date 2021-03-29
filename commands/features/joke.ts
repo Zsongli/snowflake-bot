@@ -40,8 +40,7 @@ export const slashCommand: SlashCommand = {
         const joke = funi.getRandomJokeWithTag(interaction.args.get("tag")!.value, {"exclude_tags":[]});
         if(!joke.body.length)
             return interaction.channel.send(interaction.member.toString()+" No jokes can be found with the tag "+interaction.args.get("tag")!.value);
-        interaction.channel.send(interaction.member.toString()+" Here's your funny: "+joke.body);
-        interaction.Acknowledge();
+        interaction.AcknowledgeReply("Here's your funny: "+joke.body);
     },
     onNoPerm: (interaction: SlashCommandInteraction) => {
         interaction.channel.send(interaction.member.toString() + " You don't have the permission to use this command!");

@@ -35,10 +35,9 @@ export const slashCommand: SlashCommand = {
         const teamnum: number = parseInt(interaction.args.get("teams")!.value);
         if (teamnum < 2 || teamnum > 16)
             return interaction.channel.send(interaction.member.toString() + " Invalid team number! Please provide a number from 2 to 16.");
-        else {
-            new Shuffler(interaction.channel, teamnum).Gather();
-            interaction.Acknowledge();
-        }
+
+        interaction.AcknowledgeReply("⮯");
+        new Shuffler(interaction.channel, teamnum).Gather();
     },
     onNoPerm: (interaction: SlashCommandInteraction) => {
         interaction.channel.send(interaction.member.toString() + " You don't have the permission to use this command!");

@@ -60,11 +60,27 @@ export class SlashCommandInteraction {
         this.channel = this.bot.guilds.cache.get(guild_id)?.channels.cache.get(channel_id);
     }
 
+    async AcknowledgeReply(message: string) {
+
+        //@ts-ignore
+        this.bot.api.interactions(this.id, this.token).callback.post({
+            data: {
+                type: 4,
+                data: {
+                    content: message
+                }
+            }
+        });
+    }
+
     Acknowledge() {
         //@ts-ignore
         this.bot.api.interactions(this.id, this.token).callback.post({
             data: {
-                type: 2
+                type: 4,
+                data:{
+                    content: "ㅤ"
+                }
             }
         });
     }

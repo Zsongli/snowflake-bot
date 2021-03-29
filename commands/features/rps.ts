@@ -65,7 +65,7 @@ export const slashCommand: SlashCommand = {
     desc: "Play rock-paper-scissors with the bot!",
     run: async (interaction: SlashCommandInteraction) => {
         
-        interaction.Acknowledge();
+        interaction.AcknowledgeReply("⮯");
 
         const msg: Discord.Message = await interaction.channel.send("Please wait, I'm placing the reactions.");
         msg.react("🪨").then(() => msg.react("🧻").then(() => msg.react("✂️"))).then(() => {
@@ -88,26 +88,26 @@ export const slashCommand: SlashCommand = {
                 if (random === 0) {
                     switch (choice) {
                         case "🪨":
-                            msg.edit(`<@${uid}>, My choice: ✂️ You win! (1%)`);
+                            msg.edit(`My choice: ✂️ You win! (1%)`);
                             break;
                         case "🧻":
-                            msg.edit(`<@${uid}>, My choice: 🪨 You win! (1%)`);
+                            msg.edit(`My choice: 🪨 You win! (1%)`);
                             break;
                         case "✂️":
-                            msg.edit(`<@${uid}>, My choice: 🧻 You win! (1%)`);
+                            msg.edit(`My choice: 🧻 You win! (1%)`);
                             break;
                     }
                     return;
                 }
                 switch (choice) {
                     case "🪨":
-                        msg.edit(`<@${uid}>, My choice: 🧻 I win!`);
+                        msg.edit(`My choice: 🧻 I win!`);
                         break;
                     case "🧻":
-                        msg.edit(`<@${uid}>, My choice: ✂️ I win!`);
+                        msg.edit(`My choice: ✂️ I win!`);
                         break;
                     case "✂️":
-                        msg.edit(`<@${uid}>, My choice: 🪨 I win!`);
+                        msg.edit(`My choice: 🪨 I win!`);
                         break;
                 }
                 return;
