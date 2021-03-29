@@ -40,11 +40,11 @@ bot.on("ready", () => {
 bot.on("message", (message) => {
     commandHandler.HandleMessageCommand(message);
     react(message);
-})
+});
 
 //@ts-ignore :)
 bot.ws.on("INTERACTION_CREATE", async (interaction) => {
     commandHandler.HandleSlashCommand(interaction);
-})
+});
 
 bot.login(process.env.DISCORD_TOKEN);
