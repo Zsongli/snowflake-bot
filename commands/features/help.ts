@@ -63,7 +63,8 @@ export const messageCommand: MessageCommand = {
     },
     onNoPerm: (msg: Discord.Message) => {
         msg.channel.send("You don't have the permission to use this command!");
-    }
+    },
+    hidden: true
 };
 
 export const slashCommand: SlashCommand = {
@@ -117,7 +118,7 @@ export const slashCommand: SlashCommand = {
                 ]
             };
 
-            for (const command of global.filter((cmd) => cmd.type === "MessageCommand"))
+            for (const command of global.filter((cmd) => cmd.type === "MessageCommand" && !cmd.hidden))
                 //@ts-ignore
                 embed.fields.push({ name: command.name, value: command.desc });
 

@@ -11,9 +11,9 @@ import react from "./react";
 process.on('unhandledRejection', up => { throw up; }); //Crash on unhandled promise rejection
 
 bot.on("ready", () => {
-    console.log("Bot is online");
+    console.log(bot.user!.username+" is online");
 
-    bot.user?.setPresence({
+    bot.user!.setPresence({
         activity: {
             "type": "PLAYING",
             "name": "sf!help or check the slash commands"

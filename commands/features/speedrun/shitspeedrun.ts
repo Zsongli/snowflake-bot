@@ -60,11 +60,13 @@ export const messageCommand: MessageCommand = {
                     leaderboard.push({ id: speedrun.userId, guildId: speedrun.guild.id, score: speedrun.score! }); //add to leaderboard if not present yet
                     msg.channel.send("New record!");
                     fs.writeFile(path, JSON.stringify(leaderboard), "utf-8", () => { });
+                    console.log(`New shit speedrun user added ${bot.users.cache.get(speedrun.userId)!.username}, time: ${formatTime(speedrun.score!)}`);
                 }
                 else if (user.score > speedrun.score!) { //overwrite the previous score if the new one is better
                     leaderboard[leaderboard.indexOf(user)].score = speedrun.score!;
                     msg.channel.send("New record!");
                     fs.writeFile(path, JSON.stringify(leaderboard), "utf-8", () => { });
+                    console.log(`New shit speedrun record set by ${bot.users.cache.get(user.id)!.username}, time: ${formatTime(user.score)}`);
                 }
 
                 msg.channel.send(`Took you this long: ${formatTime(speedrun!.score!)}`);
@@ -75,9 +77,7 @@ export const messageCommand: MessageCommand = {
                 leaderboard.forEach(element => {
                     if (!bot.guilds.cache.has(element.guildId))
                         leaderboard = leaderboard.filter(run => run.guildId !== element.guildId);
-                    if (!bot.guilds.cache.get(element.guildId)?.members.cache.has(element.id))
-                        leaderboard = leaderboard.filter(run => run.id !== element.id);
-                }); //check and remove people who left a server or remove servers that kicked the bot
+                }); //check and remove servers that kicked the bot
 
                 const sort = leaderboard.sort((a, b) => a.score - b.score);
 
@@ -93,43 +93,43 @@ export const messageCommand: MessageCommand = {
                     },
                     "fields": [
                         {
-                            "name": `1. ${bot.guilds.cache.get(sort[0]?.guildId)?.members.cache.get(sort[0].id)?.user.username ?? "free"} (${bot.guilds.cache.get(sort[0]?.guildId)?.name ?? ""})`,
+                            "name": `1. ${bot.users.cache.find(user => user.id === sort[0]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[0]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[0]?.score)
                         },
                         {
-                            "name": `2. ${bot.guilds.cache.get(sort[1]?.guildId)?.members.cache.get(sort[1].id)?.user.username ?? "free"} (${bot.guilds.cache.get(sort[1]?.guildId)?.name ?? ""})`,
+                            "name": `2. ${bot.users.cache.find(user => user.id === sort[1]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[1]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[1]?.score)
                         },
                         {
-                            "name": `3. ${bot.guilds.cache.get(sort[2]?.guildId)?.members.cache.get(sort[2].id)?.user.username ?? "free"} (${bot.guilds.cache.get(sort[2]?.guildId)?.name ?? ""})`,
+                            "name": `3. ${bot.users.cache.find(user => user.id === sort[2]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[2]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[2]?.score)
                         },
                         {
-                            "name": `4. ${bot.guilds.cache.get(sort[3]?.guildId)?.members.cache.get(sort[3].id)?.user.username ?? "free"} (${bot.guilds.cache.get(sort[3]?.guildId)?.name ?? ""})`,
+                            "name": `4. ${bot.users.cache.find(user => user.id === sort[3]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[3]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[3]?.score)
                         },
                         {
-                            "name": `5. ${bot.guilds.cache.get(sort[4]?.guildId)?.members.cache.get(sort[4].id)?.user.username ?? "free"} (${bot.guilds.cache.get(sort[4]?.guildId)?.name ?? ""})`,
+                            "name": `5. ${bot.users.cache.find(user => user.id === sort[4]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[4]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[4]?.score)
                         },
                         {
-                            "name": `6. ${bot.guilds.cache.get(sort[5]?.guildId)?.members.cache.get(sort[5].id)?.user.username ?? "free"} (${bot.guilds.cache.get(sort[5]?.guildId)?.name ?? ""})`,
+                            "name": `6. ${bot.users.cache.find(user => user.id === sort[5]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[5]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[5]?.score)
                         },
                         {
-                            "name": `7. ${bot.guilds.cache.get(sort[6]?.guildId)?.members.cache.get(sort[6].id)?.user.username ?? "free"} (${bot.guilds.cache.get(sort[6]?.guildId)?.name ?? ""})`,
+                            "name": `7. ${bot.users.cache.find(user => user.id === sort[6]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[6]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[6]?.score)
                         },
                         {
-                            "name": `8. ${bot.guilds.cache.get(sort[7]?.guildId)?.members.cache.get(sort[7].id)?.user.username ?? "free"} (${bot.guilds.cache.get(sort[7]?.guildId)?.name ?? ""})`,
+                            "name": `8. ${bot.users.cache.find(user => user.id === sort[7]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[7]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[7]?.score)
                         },
                         {
-                            "name": `9. ${bot.guilds.cache.get(sort[8]?.guildId)?.members.cache.get(sort[8].id)?.user.username ?? "free"} (${bot.guilds.cache.get(sort[8]?.guildId)?.name ?? ""})`,
+                            "name": `9. ${bot.users.cache.find(user => user.id === sort[8]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[8]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[8]?.score)
                         },
                         {
-                            "name": `10. ${bot.guilds.cache.get(sort[9]?.guildId)?.members.cache.get(sort[9].id)?.user.username ?? "free"} (${bot.guilds.cache.get(sort[9]?.guildId)?.name ?? ""})`,
+                            "name": `10. ${bot.users.cache.find(user => user.id === sort[9]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[9]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[9]?.score)
                         }
                     ]
@@ -180,11 +180,13 @@ export const slashCommand: SlashCommand = {
                 leaderboard.push({ id: speedrun.userId, guildId: speedrun.guild.id, score: speedrun.score! }); //add to leaderboard if not present yet
                 interaction.channel.send("New record!");
                 fs.writeFile(path, JSON.stringify(leaderboard), "utf-8", () => { });
+                console.log(`New shit speedrun user added ${bot.users.cache.get(speedrun.userId)!.username}, time: ${formatTime(speedrun.score!)}`);
             }
             else if (user.score > speedrun.score!) { //overwrite the previous score if the new one is better
                 leaderboard[leaderboard.indexOf(user)].score = speedrun.score!;
                 interaction.channel.send("New record!");
                 fs.writeFile(path, JSON.stringify(leaderboard), "utf-8", () => { });
+                console.log(`New shit speedrun record set by ${bot.users.cache.get(user.id)!.username}, time: ${formatTime(user.score)}`);
             }
             interaction.AcknowledgeReply(`Took you this long: ${formatTime(speedrun!.score!)}`);
 

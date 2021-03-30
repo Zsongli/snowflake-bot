@@ -5,7 +5,7 @@ import { bot, commandHandler } from "../../index";
 export const messageCommand: MessageCommand = {
     type: "MessageCommand",
     name: "cs\u00edtertahelyére",
-    desc: "A csítert a helyére küldi (azaz Zsoltit), ezt csak adminok tehetik meg vele.",
+    desc: "A csítert a helyére küldi (azaz Zsoltit), ezt csak adminok tehetik meg vele. Exkluzív a The Snowflake Team szerveréhez.",
     permission: (msg: Discord.Message) => msg.guild!.id === "701483086994735264",
     run: (msg: Discord.Message) => {
         if (msg.member?.permissions.has("ADMINISTRATOR"))

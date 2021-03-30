@@ -63,7 +63,7 @@ export class SlashCommandInteraction {
     async AcknowledgeReply(message: string) {
 
         //@ts-ignore
-        this.bot.api.interactions(this.id, this.token).callback.post({
+        await this.bot.api.interactions(this.id, this.token).callback.post({
             data: {
                 type: 4,
                 data: {
@@ -73,12 +73,12 @@ export class SlashCommandInteraction {
         });
     }
 
-    Acknowledge() {
+    async Acknowledge() {
         //@ts-ignore
-        this.bot.api.interactions(this.id, this.token).callback.post({
+        await this.bot.api.interactions(this.id, this.token).callback.post({
             data: {
                 type: 4,
-                data:{
+                data: {
                     content: "ㅤ"
                 }
             }
@@ -121,8 +121,10 @@ export class SnowflakeCommandHandler {
     }
 
     DeclareMessageCommand(command: MessageCommand): void {
-        if (!this.messageCommands.find(cmd => cmd.name === command.name.toLowerCase()))
+        if (!this.messageCommands.find(cmd => cmd.name === command.name.toLowerCase())) {
             this.messageCommands.push(command);
+            console.log("- Loaded message command named " + command.name);
+        }
         else throw "The specified message command has already been declared!";
     }
 
@@ -165,7 +167,7 @@ export class SnowflakeCommandHandler {
             appCommands = await this.GetAppCommands(guildId);
         else appCommands = await this.GetAppCommands()
         //@ts-ignore
-        if (!appCommands.find(cmd => cmd.name === command.name)) {
+        if (!appCommands.find(cmd => cmd.name === command.name && cmd.description === command.desc)) {
 
             if (guildId) {
                 //@ts-ignore
@@ -192,6 +194,7 @@ export class SnowflakeCommandHandler {
         }
 
         this.slashCommands.push({ type: "SlashCommand", name: command.name, desc: command.desc, run: command.run, onNoPerm: command.onNoPerm, args: command.args, permission: command.permission });
+        console.log("- Loaded slash command named " + command.name);
     }
 
     async DeleteSlashCommand(commandName: string, guildId?: string): Promise<void> {
