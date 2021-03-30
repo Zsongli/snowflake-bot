@@ -29,12 +29,12 @@ export const slashCommand: SlashCommand = {
     name: "teamshuffle",
     desc: "Shuffles people who enter into a specified number of teams.",
     args: [
-        { name: "teams", description: "The number of teams to shuffle people into, from 2 to 16.", required: true, type: SlashCommandArgumentType.INTEGER }
+        { name: "teams", description: "The number of teams to shuffle people into, from 2 to 25.", required: true, type: SlashCommandArgumentType.INTEGER }
     ],
     run: (interaction: SlashCommandInteraction) => {
         const teamnum: number = parseInt(interaction.args.get("teams")!.value);
-        if (teamnum < 2 || teamnum > 16)
-            return interaction.channel.send(interaction.member.toString() + " Invalid team number! Please provide a number from 2 to 16.");
+        if (teamnum < 2 || teamnum > 25)
+            return interaction.channel.send(interaction.member.toString() + " Invalid team number! Please provide a number from 2 to 25.");
 
         interaction.AcknowledgeReply("⮯");
         new Shuffler(interaction.channel, teamnum).Gather();

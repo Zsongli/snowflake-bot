@@ -33,8 +33,7 @@ export const slashCommand: SlashCommand = {
     run: (interaction: SlashCommandInteraction) => {
         if(!interaction.args.has("tag"))
         {
-            interaction.channel.send(interaction.member.toString()+" Here's your funny: "+funi.getRandomJoke({"exclude_tags":[]}).body);
-            return interaction.Acknowledge();
+            return interaction.AcknowledgeReply("Here's your funny: "+funi.getRandomJoke({"exclude_tags":[]}).body);
         }
 
         const joke = funi.getRandomJokeWithTag(interaction.args.get("tag")!.value, {"exclude_tags":[]});

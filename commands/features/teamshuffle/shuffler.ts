@@ -101,7 +101,7 @@ export default class Shuffler {
         for (var i = 0; i < this.teams.length; i++) {
             const list = this.teams[i].length == 0 ? "[empty]" : this.teams[i].join(", ");
             //@ts-expect-error
-            embed.fields.push({ name: `${i + 1}. team`, value: list });
+            embed.fields.push({ name: `${i + 1}. team`, value: list, inline: true });
         }
 
         try {
