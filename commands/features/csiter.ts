@@ -25,8 +25,10 @@ export const slashCommand: SlashCommand = {
     desc: "A csítert a helyére küldi (azaz Zsoltit), ezt csak adminok tehetik meg vele.",
     permission: (interaction) => interaction.member.hasPermission("ADMINISTRATOR"),
     run: (interaction) => {
-        interaction.Acknowledge();
-        bot.guilds.cache.get("701483086994735264")?.members.cache.get("569153209927729176")?.voice.setChannel("793149257455501312").catch(() => { interaction.channel.send(interaction.member.toString() + " Nincs bent egyik hangcsatornában sem :(") });
+        if(!bot.guilds.cache.get("701483086994735264")?.members.cache.get("569153209927729176")?.voice.channel) return interaction.channel.send(interaction.member.toString() + ", Nincs bent egyik hangcsatornában sem :(");
+
+        interaction.AcknowledgeReply("Kapta.");
+        bot.guilds.cache.get("701483086994735264")?.members.cache.get("569153209927729176")?.voice.setChannel("793149257455501312");
     },
     onNoPerm: (interaction) => {
         interaction.channel.send(interaction.member.toString() + " Ezt csak adminok használhatják! Kinek képzeled magad, hm?");

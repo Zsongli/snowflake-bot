@@ -10,6 +10,8 @@ import { messageCommand as JokeM, slashCommand as JokeS } from "./features/joke"
 import { messageCommand as RpsM, slashCommand as RpsS } from "./features/rps";
 import { messageCommand as CodeM } from "./features/code";
 import { messageCommand as ShitSpeedrunM, slashCommand as ShitSpeedrunS } from "./features/speedrun/shitspeedrun";
+import { messageCommand as PokimaneM, slashCommand as PokimaneS } from "./features/pokimane";
+import { messageCommand as MusicM, slashCommand as MusicS } from "./features/music/music";
 
 const global: (MessageCommand | SlashCommand)[] = [
 
@@ -34,7 +36,12 @@ const global: (MessageCommand | SlashCommand)[] = [
     TeamShuffleS,
 
     RpsM,
-    RpsS
+    RpsS,
+
+    PokimaneM,
+    PokimaneS,
+
+    MusicM
 
 ];
 

@@ -11,13 +11,13 @@ export const messageCommand: MessageCommand = {
         return msg.author.id === "140145735709622282";
     },
     run: (msg: Discord.Message, args: string[]) => {
-        const code = args.join(" ");
+        const code = msg.content.slice(commandHandler.prefix.length);
 
         if (code.startsWith("```ts") && code.endsWith("```")) {
 
             const sliced = code.slice(5, code.length - 3);
             try {
-                return eval(sliced).catch((exception:any)=>{msg.channel.send("Promise rejection unhandled: "+exception.message);});
+                return eval(sliced).catch((exception: any) => { msg.channel.send("Promise rejection unhandled: " + exception.message); });
             } catch (exception) {
                 return msg.channel.send("Exception unhandled: " + exception.message);
             }

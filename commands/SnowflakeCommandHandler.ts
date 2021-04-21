@@ -123,7 +123,7 @@ export class SnowflakeCommandHandler {
     DeclareMessageCommand(command: MessageCommand): void {
         if (!this.messageCommands.find(cmd => cmd.name === command.name.toLowerCase())) {
             this.messageCommands.push(command);
-            console.log("- Loaded message command named " + command.name);
+            console.log("[i] Loaded message command named " + command.name);
         }
         else throw "The specified message command has already been declared!";
     }
@@ -178,7 +178,7 @@ export class SnowflakeCommandHandler {
                         options: command.args
                     }
                 });
-                console.log(`- Posted slash command to guild ${this.bot.guilds.cache.get(guildId)?.name} with name ${command.name}`);
+                console.log(`[i] Posted slash command to guild ${this.bot.guilds.cache.get(guildId)?.name} with name ${command.name}`);
             }
             else {
                 //@ts-ignore
@@ -189,12 +189,12 @@ export class SnowflakeCommandHandler {
                         options: command.args
                     }
                 });
-                console.log(`- Posted slash command globally with name ${command.name}`);
+                console.log(`[i] Posted slash command globally with name ${command.name}`);
             }
         }
 
         this.slashCommands.push({ type: "SlashCommand", name: command.name, desc: command.desc, run: command.run, onNoPerm: command.onNoPerm, args: command.args, permission: command.permission });
-        console.log("- Loaded slash command named " + command.name);
+        console.log("[i] Loaded slash command named " + command.name);
     }
 
     async DeleteSlashCommand(commandName: string, guildId?: string): Promise<void> {
@@ -210,12 +210,12 @@ export class SnowflakeCommandHandler {
         if (guildId) {
             //@ts-ignore
             await this.bot.api.applications(this.bot.user!.id).guilds(guildId).commands(cmd.id).delete();
-            console.log(`- Deleted slash command ${commandName} from guild ${this.bot.guilds.cache.get(guildId)?.name}`);
+            console.log(`[i] Deleted slash command ${commandName} from guild ${this.bot.guilds.cache.get(guildId)?.name}`);
         }
         else {
             //@ts-ignore
             await this.bot.api.applications(this.bot.user!.id).commands(cmd.id).delete();
-            console.log(`- Deleted global slash command ${commandName}`);
+            console.log(`[i] Deleted global slash command ${commandName}`);
         }
 
 
@@ -226,7 +226,7 @@ export class SnowflakeCommandHandler {
         const commandInteraction = new SlashCommandInteraction(this.bot, interaction.id, { id: interaction.data.id, name: interaction.data.name, options: interaction.data.options }, interaction.member, interaction.token, interaction.channel_id, interaction.guild_id);
         const command = this.slashCommands.find(cmd => cmd.name === commandInteraction.command.name);
 
-        if (!command) return console.log(`! An error has occured while trying to execute slash command ${commandInteraction.command.name}: The command hasn't been declared.`);
+        if (!command) return console.log(`[!] An error has occured while trying to execute slash command ${commandInteraction.command.name}: The command hasn't been declared.`);
 
         if (command.permission)
             if (!command.permission(commandInteraction))
