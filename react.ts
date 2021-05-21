@@ -12,7 +12,9 @@ export default function react(msg: Discord.Message): void {
         msg.react("778676827958280213");
     if (msg.content.toLowerCase().includes("nigga") || msg.content.toLowerCase().includes("nigger") || msg.content.toLowerCase().includes("nibba"))
         msg.react("805831762004803594");
-    if(msg.content.toLowerCase().includes("\u00faristen") || msg.content.toLocaleLowerCase().includes("\u00far isten"))
-        msg.channel.send({files: [new Discord.MessageAttachment("./assets/sound/Úristen very big.mp3")]});
-        
+    if (msg.content.toLowerCase().includes("\u00faristen") || msg.content.toLocaleLowerCase().includes("\u00far isten"))
+        msg.channel.send({ files: [new Discord.MessageAttachment("./assets/sound/Úristen very big.mp3")] });
+    if (msg.content.toLowerCase().includes("amogus") || msg.content.toLowerCase().includes("among us") || msg.content.toLowerCase().includes("amongus") || msg.content.toLowerCase().includes("among-us"))
+        msg.react("839860035420422184").then(() => { msg.react("839862088537342004"); });
+
 }
