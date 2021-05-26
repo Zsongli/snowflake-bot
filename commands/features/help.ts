@@ -41,7 +41,7 @@ export const messageCommand: MessageCommand = {
                 "description": "Feel free to share your ideas :)",
                 "color": 7506394,
                 "footer": {
-                    "icon_url": msg.author.avatarURL(),
+                    "icon_url": msg.author.avatarURL() ?? undefined,
                     "text": msg.author.username
                 },
                 "author": {
@@ -83,7 +83,7 @@ export const slashCommand: SlashCommand = {
                 "description": command.desc,
                 "color": 7506394,
                 "footer": {
-                    "icon_url": interaction.member.user.avatarURL(),
+                    "icon_url": interaction.member.user.avatarURL() ?? undefined,
                     "text": interaction.member.user.username
                 },
                 "author": {

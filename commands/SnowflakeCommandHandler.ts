@@ -128,7 +128,7 @@ export class SnowflakeCommandHandler {
         else throw "The specified message command has already been declared!";
     }
 
-    HandleMessageCommand(msg: Discord.Message): void {
+    async HandleMessageCommand(msg: Discord.Message): Promise<void> {
         if (!msg.content.startsWith(this.prefix) ||
             (!this.interactWithBot && msg.author.bot)
             || !msg.member)
@@ -159,6 +159,8 @@ export class SnowflakeCommandHandler {
             return await this.bot.api.applications(this.bot.user!.id).commands.get();
     }
 
+
+
     async DeclareSlashCommand(command: SlashCommand, guildId?: string): Promise<void> {
         if (this.slashCommands.find(cmd => cmd.name === command.name.toLowerCase())) throw "The specified slash command has already been declared!";
 
@@ -166,8 +168,9 @@ export class SnowflakeCommandHandler {
         if (guildId)
             appCommands = await this.GetAppCommands(guildId);
         else appCommands = await this.GetAppCommands()
+
         //@ts-ignore
-        if (!appCommands.find(cmd => cmd.name === command.name && cmd.description === command.desc)) {
+        if (!appCommands.find(cmd => CommandsMatch(cmd, command))) {
 
             if (guildId) {
                 //@ts-ignore
@@ -222,7 +225,7 @@ export class SnowflakeCommandHandler {
 
     }
 
-    HandleSlashCommand(interaction: any): void {
+    async HandleSlashCommand(interaction: any): Promise<void> {
         const commandInteraction = new SlashCommandInteraction(this.bot, interaction.id, { id: interaction.data.id, name: interaction.data.name, options: interaction.data.options }, interaction.member, interaction.token, interaction.channel_id, interaction.guild_id);
         const command = this.slashCommands.find(cmd => cmd.name === commandInteraction.command.name);
 
@@ -236,6 +239,19 @@ export class SnowflakeCommandHandler {
     }
 
 };
+
+function CommandsMatch(discord: any, local: SlashCommand): boolean {
+    if(discord.name != local.name || discord.description != local.desc) return false;
+    if (!discord.options) return true;
+    for (let i = 0; i < discord.options.length; i++) {
+        if(discord.options[i].name != local.args?.[i]?.name) return false;
+        //console.log(local.args?.[i]?.name);
+        if(discord.options[i].description != local.args?.[i]?.description) return false;
+        if(discord.options[i].type != local.args?.[i]?.type) return false;
+        //console.log(local.args?.[i]?.type)
+    }
+    return true;
+}
 
 function ArgsToMap(options: SlashCommandArgumentResponse[]): Map<string, ArgResponseValue> {
 

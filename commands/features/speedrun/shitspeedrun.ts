@@ -93,43 +93,43 @@ export const messageCommand: MessageCommand = {
                     },
                     "fields": [
                         {
-                            "name": `1. ${bot.users.cache.find(user => user.id === sort[0]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[0]?.guildId)?.name ?? "no server"})`,
+                            "name": `1. ${bot.users.cache.find(user => user.id === sort[0]?.id)?.username ?? "???"} (${bot.guilds.cache.get(sort[0]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[0]?.score)
                         },
                         {
-                            "name": `2. ${bot.users.cache.find(user => user.id === sort[1]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[1]?.guildId)?.name ?? "no server"})`,
+                            "name": `2. ${bot.users.cache.find(user => user.id === sort[1]?.id)?.username ?? "???"} (${bot.guilds.cache.get(sort[1]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[1]?.score)
                         },
                         {
-                            "name": `3. ${bot.users.cache.find(user => user.id === sort[2]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[2]?.guildId)?.name ?? "no server"})`,
+                            "name": `3. ${bot.users.cache.find(user => user.id === sort[2]?.id)?.username ?? "???"} (${bot.guilds.cache.get(sort[2]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[2]?.score)
                         },
                         {
-                            "name": `4. ${bot.users.cache.find(user => user.id === sort[3]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[3]?.guildId)?.name ?? "no server"})`,
+                            "name": `4. ${bot.users.cache.find(user => user.id === sort[3]?.id)?.username ?? "???"} (${bot.guilds.cache.get(sort[3]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[3]?.score)
                         },
                         {
-                            "name": `5. ${bot.users.cache.find(user => user.id === sort[4]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[4]?.guildId)?.name ?? "no server"})`,
+                            "name": `5. ${bot.users.cache.find(user => user.id === sort[4]?.id)?.username ?? "???"} (${bot.guilds.cache.get(sort[4]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[4]?.score)
                         },
                         {
-                            "name": `6. ${bot.users.cache.find(user => user.id === sort[5]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[5]?.guildId)?.name ?? "no server"})`,
+                            "name": `6. ${bot.users.cache.find(user => user.id === sort[5]?.id)?.username ?? "???"} (${bot.guilds.cache.get(sort[5]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[5]?.score)
                         },
                         {
-                            "name": `7. ${bot.users.cache.find(user => user.id === sort[6]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[6]?.guildId)?.name ?? "no server"})`,
+                            "name": `7. ${bot.users.cache.find(user => user.id === sort[6]?.id)?.username ?? "???"} (${bot.guilds.cache.get(sort[6]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[6]?.score)
                         },
                         {
-                            "name": `8. ${bot.users.cache.find(user => user.id === sort[7]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[7]?.guildId)?.name ?? "no server"})`,
+                            "name": `8. ${bot.users.cache.find(user => user.id === sort[7]?.id)?.username ?? "???"} (${bot.guilds.cache.get(sort[7]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[7]?.score)
                         },
                         {
-                            "name": `9. ${bot.users.cache.find(user => user.id === sort[8]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[8]?.guildId)?.name ?? "no server"})`,
+                            "name": `9. ${bot.users.cache.find(user => user.id === sort[8]?.id)?.username ?? "???"} (${bot.guilds.cache.get(sort[8]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[8]?.score)
                         },
                         {
-                            "name": `10. ${bot.users.cache.find(user => user.id === sort[9]?.id)?.username ?? "free"} (${bot.guilds.cache.get(sort[9]?.guildId)?.name ?? "no server"})`,
+                            "name": `10. ${bot.users.cache.find(user => user.id === sort[9]?.id)?.username ?? "???"} (${bot.guilds.cache.get(sort[9]?.guildId)?.name ?? "no server"})`,
                             "value": formatTime(sort[9]?.score)
                         }
                     ]

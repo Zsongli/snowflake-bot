@@ -162,7 +162,7 @@ export const messageCommand: MessageCommand = {
 
                 break;
             default:
-                return msg.channel.send("Music what? (see /help music)");
+                return msg.channel.send("Music who? (see /help music)");
                 break;
 
         }

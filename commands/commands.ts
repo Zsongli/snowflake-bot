@@ -1,7 +1,6 @@
 import Discord from "discord.js";
 import { MessageCommand, SlashCommand, SlashCommandArgumentType } from "./SnowflakeCommandHandler";
 
-
 import { messageCommand as HelpM, slashCommand as HelpS } from "./features/help";
 import { messageCommand as PingM, slashCommand as PingS } from "./features/ping";
 import { messageCommand as CoinflipM, slashCommand as CoinflipS } from "./features/coinflip";
@@ -12,6 +11,7 @@ import { messageCommand as CodeM } from "./features/code";
 import { messageCommand as ShitSpeedrunM, slashCommand as ShitSpeedrunS } from "./features/speedrun/shitspeedrun";
 import { messageCommand as PokimaneM, slashCommand as PokimaneS } from "./features/pokimane";
 import { messageCommand as MusicM, slashCommand as MusicS } from "./features/music/music";
+import { messageCommand as ColorsM, slashCommand as ColorsS } from "./features/colors/colors";
 
 const global: (MessageCommand | SlashCommand)[] = [
 
@@ -41,7 +41,10 @@ const global: (MessageCommand | SlashCommand)[] = [
     PokimaneM,
     PokimaneS,
 
-    MusicM
+    MusicM,
+
+    ColorsM,
+    ColorsS
 
 ];
 
