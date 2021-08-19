@@ -4,6 +4,6 @@ Now rewritten in TypeScript with a command handler with hopefully not so terribl
 
 XD
 
-![WARNING](https://c.tenor.com/tDau9a7i5hwAAAAi/alert-siren.gif)
 # WARNING
+![WARNING](https://c.tenor.com/tDau9a7i5hwAAAAi/alert-siren.gif)  
 You are now looking at outdated code. Getting a full rework soon.
